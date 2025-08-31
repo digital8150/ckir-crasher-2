@@ -1,0 +1,131 @@
+﻿<Window x:Class="ckir_crasher_2.Windows.Logon"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ckir_crasher_2.Windows"
+         xmlns:fa="http://schemas.fontawesome.com/icons/fonts"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        mc:Ignorable="d"
+        Title="Logon" Height="650" Width="450"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Loaded="windowsloaded">
+    <Border Background="#fff" CornerRadius="5" MouseLeftButtonDown="Border_MouseLeftButtonDown" Name="border_main" Height="600" Width="400" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Grid>
+
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="540"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+
+            <!-- Title bar -->
+            <TextBlock Text="로그인이 필요합니다." VerticalAlignment="Center" Margin="15,0,0,0" FontFamily="/Fonts/#a고딕13"/>
+            <Button Name="closeapp" HorizontalAlignment="Right" Width="30" Background="Transparent" BorderBrush="Transparent" Click="ExitApp">
+                <Button.Content>
+                    <fa:FontAwesome Icon="Solid_Xmark"/>
+                </Button.Content>
+            </Button>
+
+
+            <Border Name="loginborder" Grid.Row="1">
+
+
+                <StackPanel Name="stackpanel_login" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <fa:FontAwesome Icon="Solid_UserShield" Foreground="#4444ff" FontSize="72" Margin="25,50,25,25"/>
+                    <hc:TextBox Name ="idbox" Margin="20,5,20,5" Width="200" hc:InfoElement.Placeholder="아이디" FontFamily="/Fonts/#a고딕13"/>
+                    <hc:PasswordBox Name="pwbox" Margin="20,5,20,5" Width="200" hc:InfoElement.Placeholder="비밀번호" FontFamily="/Fonts/#a고딕13"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+                        <fa:FontAwesome Name="status_icon" Icon="Solid_CircleInfo" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <TextBlock Name="status_text" Margin="5,0,0,0" Text="사용자 인증이 필요합니다." FontFamily="/Fonts/#a고딕17" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,50" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35">
+                        <Button Name="btn_register" Content="회원가입" Width="95" Margin="0,0,10,0" FontFamily="/Fonts/#a고딕13" Click="show_register" />
+                         <Button Name="btn_login" Content="로그인" Width="95"  FontFamily="/Fonts/#a고딕13" Style="{StaticResource ButtonPrimary}" Click="btn_login_Click" />
+                    </StackPanel>
+
+                        <TextBlock FontFamily="/Fonts/#a고딕13" Name="textblock_version_indicatior">
+                              
+                        </TextBlock>
+
+                </StackPanel>
+
+            </Border>
+
+            <!-- Footer Section -->
+            <Grid Grid.Row="2">
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="/Fonts/#a고딕13" >
+                        Copyrightⓒ 2023 SECRET® All rights reserved
+                    </TextBlock>
+            </Grid>
+
+        </Grid>
+
+        <!-- Meta Grid Section -->
+
+        <Border Name="border_reg" VerticalAlignment="Center" HorizontalAlignment="Left" Width="0" Height="600" Background="#fff">
+            <Grid>
+                
+
+                
+
+                <StackPanel VerticalAlignment="Center" Margin="20">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.Column="0" Margin="0,0,0,30">
+                            <fa:FontAwesome Icon="Solid_UserPlus" FontSize="48"/>
+                            <TextBlock Text="사용자를 추가합니다." FontFamily="/Fonts/#a고딕13" HorizontalAlignment="Center" Margin="5"/>
+                        </StackPanel>
+                        <TextBlock Text="Username" FontFamily="/Fonts/#a고딕13" Margin="0,5"/>
+                    <TextBox Name="register_id"  Margin="0,5"/>
+                    <TextBlock Text="Password" FontFamily="/Fonts/#a고딕13" Margin="0,5"/>
+                    <PasswordBox Name="register_pw"  Margin="0,5"/>
+                    <TextBlock Text="Password Confirmation" FontFamily="/Fonts/#a고딕13" Margin="0,5"/>
+                    <PasswordBox Name="register_pwc"  Margin="0,5"/>
+
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="0,5">
+                        <Button Name="register_reg" Content="회원가입" Height="25" FontFamily="/Fonts/#a고딕13" Style="{StaticResource ButtonPrimary}" HorizontalAlignment="Stretch" Margin="0,5" Click="register"/>
+                        <Button Name="register_exit" Content="취소"  Height="25"  FontFamily="/Fonts/#a고딕13"  HorizontalAlignment="Stretch" Margin="0,5" Click="close_register"/>
+                    </StackPanel>
+                </StackPanel>
+
+            </Grid>
+        </Border>
+
+
+        <!-- Built-in Popup -->
+            <Border Name="popup_border" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Height="0" Background="#fff" BorderBrush="#00ffffff" CornerRadius="15">
+                <Border.Effect>
+                    <DropShadowEffect Color="gray" Direction="0" ShadowDepth="0" BlurRadius="5" RenderingBias="Quality" Opacity="0.8"/>
+                </Border.Effect>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="80"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Name="popup_content" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="/Fonts/#a고딕13" FontSize="18" Width="550" TextWrapping="WrapWithOverflow" TextAlignment="Center">
+                        빌트인 팝업 테스트 메시지
+                    </TextBlock>
+
+                    <Border Grid.Row="1" Background="#ddd" CornerRadius="0,0,15,15"/>
+                    <Button Name="popup_closebuton" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="200" FontFamily="/Fonts/#a고딕17" FontSize="16" Click="hide_popup">
+                        확인
+                    </Button>
+                </Grid>
+
+            </Border>
+
+
+        </Grid>
+
+        <Border.Effect>
+            <DropShadowEffect Color="#808080" Direction="0" ShadowDepth="0" BlurRadius="30" RenderingBias="Quality" Opacity="0.6"/>
+        </Border.Effect>
+    </Border>
+</Window>
