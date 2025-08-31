@@ -1,3 +1,3 @@
 # ckir crasher 2
 ### DISCLAIMER
-⚠️ for educational purporse only
+⚠️ for educational purpose only
